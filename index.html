@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un messaggio per te ❤️</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #ffe0e0; font-family: 'Arial', sans-serif; overflow: hidden; margin: 0; }
+        .container { text-align: center; }
+        .envelope-wrapper { cursor: pointer; transition: transform 0.3s; }
+        .envelope-wrapper:hover { transform: scale(1.1); }
+        .envelope { width: 150px; height: 100px; background-color: #ff4d4d; position: relative; border-radius: 0 0 5px 5px; margin: 0 auto; }
+        .envelope::before { content: ""; position: absolute; top: -75px; left: 0; border-left: 75px solid transparent; border-right: 75px solid transparent; border-bottom: 75px solid #ff4d4d; }
+        .heart { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: white; font-size: 30px; }
+        
+        #question-page { display: none; }
+        h1 { color: #d63031; }
+        .buttons { margin-top: 50px; position: relative; height: 100px; }
+        button { padding: 15px 30px; font-size: 1.2rem; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        #yesBtn { background-color: #27ae60; color: white; }
+        #noBtn { background-color: #d63031; color: white; position: absolute; }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="envelope-page">
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="envelope"><div class="heart">❤️</div></div>
+        </div>
+        <p>Hai ricevuto una lettera. Clicca per aprirla!</p>
+    </div>
+
+    <div class="container" id="question-page">
+        <h1>Vuoi essere la mia Valentina? ❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">SÌ!</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('envelope-page').style.display = 'none';
+            document.getElementById('question-page').style.display = 'block';
+        }
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            alert("Sapevo che avresti detto di sì! ❤️ Ti amo!");
+            // Qui puoi aggiungere un reindirizzamento a una vostra foto o un video
+            // window.location.href = "URL_DI_UNA_VOSTRA_FOTO";
+        }
+    </script>
+</body>
+</html>
